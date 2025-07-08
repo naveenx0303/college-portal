@@ -7,18 +7,31 @@ const rateLimit = require('express-rate-limit');
 const morgan = require('morgan');
 const swaggerJsdoc = require('swagger-jsdoc');
 const swaggerUi = require('swagger-ui-express');
+//changed
+const connectDB = require('./Backend/config/db');
+
 require('dotenv').config();
 
 const app = express();
 
+// changed
+
+connectDB(); // 👈 connect to MongoDB
+
+app.use(express.json());
+
+app.get('/', (req, res) => res.send('API Running'));
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+
 // Import routes
-const authRoutes = require('./routes/auth');
-const userRoutes = require('./routes/users');
-const courseRoutes = require('./routes/courses');
-const notesRoutes = require('./routes/notes');
-const gradeRoutes = require('./routes/grades');
-const assessmentRoutes = require('./routes/assessments');
-const announcementRoutes = require('./routes/announcements');
+const authRoutes = require('./Backend/routes/auth');
+const userRoutes = require('./Backend/routes/users');
+const courseRoutes = require('./Backend/routes/courses');
+const notesRoutes = require('./Backend/routes/notes');
+const gradeRoutes = require('./Backend/routes/grades');
+const assessmentRoutes = require('./Backend/routes/assessments');
+const announcementRoutes = require('./Backend/routes/announcements');
 
 // Middleware
 app.use(helmet());
@@ -129,7 +142,8 @@ app.use('*', (req, res) => {
   });
 });
 
-const PORT = process.env.PORT || 5000;
+//const 
+PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
   console.log(`API Documentation: http://localhost:${PORT}/api-docs`);
