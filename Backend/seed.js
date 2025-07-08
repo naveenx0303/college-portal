@@ -10,14 +10,19 @@ const Assessment = require('./models/Assessment');
 const AssessmentQuestion = require('./models/AssessmentQuestion');
 
 // Connect to MongoDB
-mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/college_portal', {
+// mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/college_portal', {
+//   useNewUrlParser: true,
+//   useUnifiedTopology: true,
+// });
+
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/college-portal', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
 
 async function seed() {
   try {
-    await mongoose.connection.db.dropDatabase();
+    //await mongoose.connection.db.dropDatabase();
     console.log('✅ Database cleared');
 
     // Create users
