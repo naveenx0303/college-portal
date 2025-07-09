@@ -48,7 +48,7 @@ function Login() {
     try {
       await login(email, password);
       // Redirect to previous page or dashboard
-      const from = location.state?.from?.pathname || '/';
+      const from = location.state?.from?.pathname || '/dashboard';
       navigate(from, { replace: true });
     } catch (err) {
       setError('Invalid credentials');
