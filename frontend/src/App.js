@@ -55,19 +55,30 @@ import Grades from './pages/Grades';
 //   );
 // }
 import ProtectedRoute from './components/ProtectedRoute';
+import { Navigate } from 'react-router-dom';
+import axios from 'axios';
 // ...other imports
 
 function App() {
+  const isAuthenticated = !!localStorage.getItem('token');
+  axios.defaults.baseURL = 'http://localhost:5001';
   return (
     <Router>
       <Navbar />
       <div className="container mt-4">
         <Routes>
-          <Route path="/" element={
+          {/* <Route path="/" element={
             <ProtectedRoute>
               <Dashboard />
             </ProtectedRoute>
-          } />
+          } /> */}
+
+          <Route
+  path="/dashboard"
+  element={
+    isAuthenticated ? <Dashboard /> : <Navigate to="/login" replace />
+  }
+/>
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/courses" element={
