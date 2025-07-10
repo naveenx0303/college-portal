@@ -21,7 +21,8 @@ function Dashboard() {
   const [assessments, setAssessments] = useState([]);
   const [announcements, setAnnouncements] = useState([]);
 
-  const token = localStorage.getItem('token'); // Adjust based on your auth method
+  // const token = localStorage.getItem('token');
+   // Adjust based on your auth method
 
   // useEffect(() => {
   //   const fetchData = async () => {
@@ -230,11 +231,23 @@ function Dashboard() {
 
   useEffect(() => {
     const fetchData = async () => {
+      // const token = localStorage.getItem('token');
+      // if (!token) {
+      //   console.warn('No token found');
+      //   return;
+      // }
+
+
+
+
       const token = localStorage.getItem('token');
-      if (!token) {
-        console.warn('No token found');
-        return;
-      }
+console.log('Token:', token);
+if (!token) {
+  console.warn('No token found in localStorage');
+  return;
+}
+
+
 
       try {
         // ✅ Fetch user
@@ -290,6 +303,10 @@ function Dashboard() {
           console.error('Response data:', error.response.data);
         }
       }
+
+         ////////////////////////////////////////////////
+
+        console.log('User:', user);
     };
 
     fetchData();
