@@ -67,18 +67,18 @@ function App() {
       <Navbar />
       <div className="container mt-4">
         <Routes>
-          {/* <Route path="/" element={
+          <Route path="/dashboard" element={
             <ProtectedRoute>
               <Dashboard />
             </ProtectedRoute>
-          } /> */}
+          } />
 
-          <Route
+          {/* <Route
   path="/dashboard"
   element={
     isAuthenticated ? <Dashboard /> : <Navigate to="/login" replace />
   }
-/>
+/> */}
           <Route path="/login" element={<Login />} /> 
           <Route path="/register" element={<Register />} />
           <Route path="/courses" element={

@@ -237,9 +237,6 @@ function Dashboard() {
       //   return;
       // }
 
-
-
-
       const token = localStorage.getItem('token');
 console.log('Token:', token);
 if (!token) {
