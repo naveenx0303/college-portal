@@ -15,7 +15,7 @@
 // //   useUnifiedTopology: true,
 // // });
 
-// mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/college-portal', {
+// mongoose.connect(process.env.MONGODB_URI || 'mongodb://192.168.68.109:27017/college-portal', {
 //   useNewUrlParser: true,
 //   useUnifiedTopology: true,
 // });
@@ -122,7 +122,7 @@ const Assessment = require('./models/Assessment');
 const AssessmentQuestion = require('./models/AssessmentQuestion');
 
 // Connect to MongoDB
-mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/college-portal', {
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://192.168.68.109:27017/college-portal', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
