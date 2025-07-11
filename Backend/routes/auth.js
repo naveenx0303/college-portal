@@ -85,7 +85,6 @@ router.post('/register', [
       last_name,
       role,
       student_id,
-      phone,
       department
     });
 
@@ -244,3 +243,5 @@ router.get('/me', authMiddleware, async (req, res) => {
 });
 
 module.exports = router;
+
+

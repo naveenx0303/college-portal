@@ -237,6 +237,7 @@ function Dashboard() {
       //   return;
       // }
 
+
       const token = localStorage.getItem('token');
 console.log('Token:', token);
 if (!token) {
@@ -252,7 +253,7 @@ if (!token) {
           headers: { Authorization: `Bearer ${token}` }
         });
 
-        const userData = resUser.data;
+        const userData = resUser.data.data;
         setUser(userData);
 
         let fetchedCourses = [];
@@ -314,7 +315,7 @@ if (!token) {
 
   return (
     <div>
-      <h2>Welcome, {user.name} ({user.role})</h2>
+      <h2>Welcome, {user.first_name} ({user.role})</h2>
 
       <h3>Your Courses</h3>
       <ul>
