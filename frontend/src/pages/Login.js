@@ -31,7 +31,7 @@
 // }
 
 // export default Login;
-import React, { useState } from 'react';
+import React, { useState , useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { login } from '../services/authService';
 
@@ -57,6 +57,15 @@ function Login() {
 // console.log('Session:', sessionStorage.getItem('token'));
 // console.log('Cookies:', document.cookie);
 //   };
+
+useEffect(() => {
+  const token = localStorage.getItem('token');
+  if (token) {
+    navigate('/dashboard');
+  }
+}, []);
+
+
 
 const handleSubmit = async (e) => {
   e.preventDefault();
